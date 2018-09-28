@@ -1,0 +1,14 @@
+plugins {
+  id "org.gatored.gatorgradle" version "0.3.0"
+  id "com.linkedin.python-sdist" version "0.7.18"
+}
+
+// declare the repositories that are used to meet dependencies
+repositories {
+  pyGradlePyPi()
+}
+
+// specify the use of gradle version 4.9
+wrapper {
+  gradleVersion = '4.9'
+}
