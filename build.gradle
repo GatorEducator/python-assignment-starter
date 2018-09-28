@@ -21,6 +21,7 @@ wrapper {
 python {
   // dependencies
   pip 'pip:18.0.0'
+  pip 'flake8:3.5.0'
   // pip 'some_module:1.0'
 
   minPythonVersion = "3.6"
@@ -34,6 +35,12 @@ python {
 task run(type: PythonTask) {
   // can also pass arguments, or use array form
   command = "src/example.py"
+}
+
+task check(type: PythonTask) {
+  module = "flake8"
+  // path to check
+  command = "src"
 }
 
 // empty (default) pip install task to set up "gradle build" command as installer
