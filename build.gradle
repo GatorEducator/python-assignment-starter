@@ -27,3 +27,4 @@ python {
 tasks.flake8.enabled = true
 tasks.packageDocs.enabled = false
 tasks.pytest.enabled = true
+tasks.buildPex.enabled = false
