@@ -47,5 +47,4 @@ script:
   - proselint writing/reflection.md
   # in an actual assignment, only the following lines would be in the script block
   - gradle --version
-  - gradle clean
   - gradle grade
