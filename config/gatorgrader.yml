@@ -1,0 +1,18 @@
+---
+name: python-starter
+break: true
+fastfail: false
+indent: 4
+---
+src/python-starter:
+    __init__.py:
+        --exists
+        --fragment "print(" --count 2
+writing/reflection.md:
+    mdl
+    --paragraphs 2
+    --words 6
+--commits 18
+
+# if you wish to specify an exact gatorgrader command... must include --json
+# gg: --directory src/main/java/samplelab --file SampleLabMain.java --exists --json
