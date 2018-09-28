@@ -1,6 +1,12 @@
+// PyGradle build file
+// See https://attx-project.github.io/Building-with-Gradle.html#installation for an excellent explanation of the basics.
+
 plugins {
   id "org.gatored.gatorgradle" version "0.3.0"
-  id "com.linkedin.python-sdist" version "0.7.18"
+  // use pygradle-cli for command line applications
+  id "com.linkedin.python-cli" version "0.7.18"
+  // use pygradle-sdist for python libraries
+  // id "com.linkedin.python-sdist" version "0.7.18"
 }
 
 // declare the repositories that are used to meet dependencies
@@ -12,3 +18,12 @@ repositories {
 wrapper {
   gradleVersion = '4.9'
 }
+
+python {
+  // 3.6 is installed on Alden computers
+  details.pythonVersion = '3.6'
+}
+
+tasks.flake8.enabled = true
+tasks.packageDocs.enabled = false
+tasks.pytest.enabled = true
