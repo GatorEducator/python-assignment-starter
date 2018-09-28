@@ -1,17 +1,16 @@
-// PyGradle build file
-// See https://attx-project.github.io/Building-with-Gradle.html#installation for an excellent explanation of the basics.
+// Python build file
+// See https://github.com/xvik/gradle-use-python-plugin for an excellent explanation of the basics.
 
 plugins {
   id "org.gatored.gatorgradle" version "0.3.0"
-  // use pygradle-cli for command line applications
-  id "com.linkedin.python-cli" version "0.7.18"
-  // use pygradle-sdist for python libraries
-  // id "com.linkedin.python-sdist" version "0.7.18"
+  id "ru.vyarus.use-python" version "1.2.0"
 }
 
 // declare the repositories that are used to meet dependencies
 repositories {
-  pyGradlePyPi()
+  mavenLocal()
+  mavenCentral()
+  jcenter()
 }
 
 // specify the use of gradle version 4.9
@@ -20,11 +19,23 @@ wrapper {
 }
 
 python {
+  // dependencies
+  pip 'pip:18.0.0'
+  // pip 'some_module:1.0'
+
+  minPythonVersion = "3.6"
+
   // 3.6 is installed on Alden computers
-  details.pythonVersion = '3.6'
+  // force no fallback to python2
+  pythonBinary = "python3"
 }
 
-tasks.flake8.enabled = true
-tasks.packageDocs.enabled = false
-tasks.pytest.enabled = true
-tasks.buildPex.enabled = false
+// run task to run python code
+task run(type: PythonTask) {
+  // can also pass arguments, or use array form
+  command = "src/example.py"
+}
+
+// empty (default) pip install task to set up "gradle build" command as installer
+task build(type: PipInstallTask) {
+}
