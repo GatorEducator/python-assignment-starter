@@ -4,8 +4,7 @@ break: true
 fastfail: false
 indent: 4
 ---
-src/python-starter:
-    __init__.py:
+src/example.py:
         --exists
         --fragment "print(" --count 2
 writing/reflection.md:
