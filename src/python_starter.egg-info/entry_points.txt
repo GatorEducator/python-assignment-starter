@@ -1,3 +1,0 @@
-[console_scripts]
-run = pythonstarter.run:main
-
