@@ -1,21 +1,28 @@
 // Python build file
 // See https://github.com/xvik/gradle-use-python-plugin for an excellent explanation of the basics.
 
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "gradle.plugin.org.gatored:gatorgradle:+"
+  }
+}
+
 plugins {
-  id "org.gatored.gatorgradle" version "0.3.0"
   id "ru.vyarus.use-python" version "1.2.0"
 }
+
+apply plugin: "org.gatored.gatorgradle"
 
 // declare the repositories that are used to meet dependencies
 repositories {
   mavenLocal()
   mavenCentral()
   jcenter()
-}
-
-// specify the use of gradle version 4.9
-wrapper {
-  gradleVersion = '4.9'
 }
 
 python {
